@@ -1,25 +1,31 @@
 package main.java.foodOrdering.model;
 
-    import java.time.LocalDateTime;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-    public class Order {
-        private String orderId;
+public class Order {
+        private int orderId;
+        private String username;
+        private List<CartItem> items;
         private LocalDateTime date;
         private double total;
         private OrderStatus status;
 
-        public Order(String orderId, double total) {
+        public Order(int orderId, String username, double total) {
             this.orderId = orderId;
+            this.username = username;
+            this.items = new ArrayList<>();
             this.total = total;
             this.date = LocalDateTime.now();
             this.status = OrderStatus.PLACED;
         }
 
-        public String getOrderId() {
+        public int getOrderId() {
             return orderId;
         }
 
-        public void setOrderId(String orderId) {
+        public void setOrderId(int orderId) {
             this.orderId = orderId;
         }
 
@@ -39,11 +45,27 @@ package main.java.foodOrdering.model;
             this.total = total;
         }
 
-        public OrderStatus getStatus() {
-            return status;
-        }
+    public String getUsername() {
+        return username;
+    }
 
-        public void setStatus(OrderStatus status) {
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public List<CartItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<CartItem> items) {
+        this.items = items;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
             this.status = status;
         }
     }
